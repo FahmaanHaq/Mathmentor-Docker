@@ -2,6 +2,8 @@
 
 Notes for deploying to production.
 
+> **Local development:** Use `docker compose up --build` from the repo root. See [SETUP.md](SETUP.md) for details. The `docker-compose.yml` is intended for local development only.
+
 ## Server Requirements
 
 - Python 3.8+, Node.js 18+ (for build)
