@@ -1,0 +1,24 @@
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.form-row .form-group {
+  min-width: 0; /* Prevents grid items from overflowing */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    gap: var(--spacing-xs);
+  }
+}
