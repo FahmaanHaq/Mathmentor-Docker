@@ -2,6 +2,59 @@
 
 Step-by-step setup for local development.
 
+## Docker (recommended)
+
+The easiest way to run the full stack locally is with Docker Compose.
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (includes Docker Compose)
+
+### 1. Start all services
+
+```bash
+docker compose up --build
+```
+
+This starts the React frontend, Django backend (Daphne/ASGI), PostgreSQL, and Redis.
+
+| Service  | URL                        |
+|----------|----------------------------|
+| Frontend | http://localhost:3000       |
+| Backend  | http://localhost:8000       |
+| Admin    | http://localhost:8000/admin |
+
+### 2. Create a superuser (optional)
+
+```bash
+docker compose exec backend python manage.py createsuperuser
+```
+
+### 3. Other useful commands
+
+```bash
+# Open a Django shell
+docker compose exec backend python manage.py shell
+
+# Run tests
+docker compose exec backend python manage.py test
+
+# View logs
+docker compose logs -f backend
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (database data)
+docker compose down -v
+```
+
+> **Note:** `docker-compose.yml` is for **local development only**. The `SECRET_KEY` and database credentials it sets are not suitable for production. See [DEPLOYMENT.md](DEPLOYMENT.md) for production setup.
+
+---
+
+## Manual Setup (without Docker)
+
 ## Prerequisites
 
 - **Python 3.8+** — Backend
